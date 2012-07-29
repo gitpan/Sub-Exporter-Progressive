@@ -1,0 +1,48 @@
+NAME
+    Sub::Exporter::Progressive - Only use Sub::Exporter if you need it
+
+VERSION
+    version 0.001000
+
+SYNOPSIS
+     package Syntax::Keyword::Gather;
+
+     use Sub::Exporter::Progressive -setup => {
+       exports => [qw( break gather gathered take )],
+       groups => {
+         defaults => [qw( break gather gathered take )],
+       },
+     };
+
+     # elsewhere
+
+     # uses Exporter for speed
+     use Syntax::Keyword::Gather;
+
+     # somewhere else
+
+     # uses Sub::Exporter for features
+     use Syntax::Keyword::Gather 'gather', take => { -as => 'grab' };
+
+DESCRIPTION
+    Sub::Exporter is an incredibly powerful module, but with that power
+    comes great responsibility, er- as well as some runtime penalties. This
+    module is a "Sub::Exporter" wrapper that will let your users just use
+    Exporter if all they are doing is picking exports, but use
+    "Sub::Exporter" if your users try to use "Sub::Exporter"'s more advanced
+    features features, like renaming exports, if they try to use them.
+
+    Note that this module will export @EXPORT and @EXPORT_OK package
+    variables for "Exporter" to work. Additionally, if your package uses
+    advanced "Sub::Exporter" features like currying, this module will only
+    ever use "Sub::Exporter", so you might as well use it directly.
+
+AUTHOR
+    Arthur Axel "fREW" Schmidt <frioux+cpan@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2012 by Arthur Axel "fREW" Schmidt.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+

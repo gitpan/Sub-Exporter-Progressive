@@ -1,0 +1,13 @@
+Changes
+LICENSE
+MANIFEST
+META.json
+Makefile.PL
+README
+dist.ini
+lib/Sub/Exporter/Progressive.pm
+t/basic.t
+t/default.t
+t/lib/A/Junk.pm
+t/release-pod-syntax.t
+t/sex.t
