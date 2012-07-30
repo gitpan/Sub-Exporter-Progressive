@@ -5,7 +5,7 @@ package Sub::Exporter::Progressive;
 use strict;
 use warnings;
 
-our $VERSION = '0.001000'; # VERSION
+our $VERSION = '0.001001'; # VERSION
 
 use List::Util 'first';
 
@@ -76,12 +76,12 @@ sub sub_export_options {
                if first { $_ ne 'default' } keys %{$options{groups}};
 
             @defaults = @{$options{groups}{default} || [] };
-            @defaults = @exports if $defaults[0] eq '-all';
          } else {
             $TOO_COMPLICATED = 1;
             last OPTIONS
          }
       }
+      @defaults = @exports if $defaults[0] eq '-all';
    }
 
    return $TOO_COMPLICATED, {
@@ -103,7 +103,7 @@ Sub::Exporter::Progressive - Only use Sub::Exporter if you need it
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =head1 SYNOPSIS
 

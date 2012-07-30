@@ -6,8 +6,10 @@ Makefile.PL
 README
 dist.ini
 lib/Sub/Exporter/Progressive.pm
+t/all.t
 t/basic.t
 t/default.t
 t/lib/A/Junk.pm
+t/lib/A/JunkAll.pm
 t/release-pod-syntax.t
 t/sex.t
