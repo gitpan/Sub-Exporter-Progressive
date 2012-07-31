@@ -21,10 +21,9 @@ my %WriteMakefileArgs = (
   "NAME" => "Sub::Exporter::Progressive",
   "PREREQ_PM" => {
     "Exporter" => 0,
-    "List::Util" => 0,
-    "Sub::Exporter" => 0
+    "List::Util" => 0
   },
-  "VERSION" => "0.001001",
+  "VERSION" => "0.001002",
   "test" => {
     "TESTS" => "t/*.t"
   }
