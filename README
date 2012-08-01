@@ -2,7 +2,7 @@ NAME
     Sub::Exporter::Progressive - Only use Sub::Exporter if you need it
 
 VERSION
-    version 0.001002
+    version 0.001003
 
 SYNOPSIS
      package Syntax::Keyword::Gather;
