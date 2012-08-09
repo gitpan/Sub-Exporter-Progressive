@@ -1,11 +1,9 @@
 package Sub::Exporter::Progressive;
 
-# ABSTRACT: Only use Sub::Exporter if you need it
-
 use strict;
 use warnings;
 
-our $VERSION = '0.001003'; # VERSION
+our $VERSION = '0.001004';
 
 use List::Util 'first';
 
@@ -89,17 +87,9 @@ sub sub_export_options {
 
 1;
 
-
-__END__
-=pod
-
 =head1 NAME
 
 Sub::Exporter::Progressive - Only use Sub::Exporter if you need it
-
-=head1 VERSION
-
-version 0.001003
 
 =head1 SYNOPSIS
 
@@ -138,14 +128,22 @@ C<Sub::Exporter>, so you might as well use it directly.
 
 =head1 AUTHOR
 
-Arthur Axel "fREW" Schmidt <frioux+cpan@gmail.com>
+frew - Arthur Axel Schmidt (cpan:FREW) <frioux+cpan@gmail.com>
 
-=head1 COPYRIGHT AND LICENSE
+=head1 CONTRIBUTORS
 
-This software is copyright (c) 2012 by Arthur Axel "fREW" Schmidt.
+ilmari - Dagfinn Ilmari Mannsåker (cpan:ILMARI) <ilmari@ilmari.org>
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+mst - Matt S. Trout (cpan:MSTROUT) <mst@shadowcat.co.uk>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2012 the Sub::Exporter::Progressive L</AUTHOR> and
+L</CONTRIBUTORS> as listed above.
+
+=head1 LICENSE
+
+This library is free software and may be distributed under the same terms
+as perl itself.
 
 =cut
-

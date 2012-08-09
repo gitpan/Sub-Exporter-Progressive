@@ -1,9 +1,6 @@
 NAME
     Sub::Exporter::Progressive - Only use Sub::Exporter if you need it
 
-VERSION
-    version 0.001003
-
 SYNOPSIS
      package Syntax::Keyword::Gather;
 
@@ -38,11 +35,18 @@ DESCRIPTION
     ever use "Sub::Exporter", so you might as well use it directly.
 
 AUTHOR
-    Arthur Axel "fREW" Schmidt <frioux+cpan@gmail.com>
+    frew - Arthur Axel Schmidt (cpan:FREW) <frioux+cpan@gmail.com>
 
-COPYRIGHT AND LICENSE
-    This software is copyright (c) 2012 by Arthur Axel "fREW" Schmidt.
+CONTRIBUTORS
+    ilmari - Dagfinn Ilmari Mannsåker (cpan:ILMARI) <ilmari@ilmari.org>
 
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
+    mst - Matt S. Trout (cpan:MSTROUT) <mst@shadowcat.co.uk>
+
+COPYRIGHT
+    Copyright (c) 2012 the Sub::Exporter::Progressive "AUTHOR" and
+    "CONTRIBUTORS" as listed above.
+
+LICENSE
+    This library is free software and may be distributed under the same
+    terms as perl itself.
 

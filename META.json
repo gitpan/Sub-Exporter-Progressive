@@ -1,10 +1,10 @@
 {
    "abstract" : "Only use Sub::Exporter if you need it",
    "author" : [
-      "Arthur Axel \"fREW\" Schmidt <frioux+cpan@gmail.com>"
+      "frew - Arthur Axel Schmidt (cpan:FREW) <frioux+cpan@gmail.com>"
    ],
-   "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300021, CPAN::Meta::Converter version 2.120921",
+   "dynamic_config" : 1,
+   "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -13,27 +13,27 @@
       "version" : "2"
    },
    "name" : "Sub-Exporter-Progressive",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "inc"
+      ]
+   },
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.30"
+            "ExtUtils::MakeMaker" : "0"
          }
       },
       "runtime" : {
-         "requires" : {
-            "Exporter" : "0",
-            "List::Util" : "0"
-         }
+         "requires" : {}
       }
    },
    "release_status" : "stable",
-   "resources" : {
-      "repository" : {
-         "type" : "git",
-         "url" : "git://github.com/frioux/Sub-Exporter-Progressive.git",
-         "web" : "http://github.com/frioux/Sub-Exporter-Progressive"
-      }
-   },
-   "version" : "0.001003"
+   "version" : "0.001004"
 }
-
