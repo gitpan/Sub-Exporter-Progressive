@@ -3,24 +3,19 @@ package Sub::Exporter::Progressive;
 use strict;
 use warnings;
 
-our $VERSION = '0.001006';
+our $VERSION = '0.001007';
 
+use Carp 'croak';
 use List::Util 'first';
 
 sub import {
    my ($self, @args) = @_;
 
-   my $inner_target = caller(0);
-   my ($TOO_COMPLICATED, $export_data) = sub_export_options($inner_target, @args);
-
-   die <<'DEATH' if $TOO_COMPLICATED;
-You are using Sub::Exporter::Progressive, but the features your program uses from
-Sub::Exporter cannot be implemented without Sub::Exporter, so you might as well
-just use vanilla Sub::Exporter
-DEATH
+   my $inner_target = caller;
+   my $export_data = sub_export_options($inner_target, @args);
 
    my $full_exporter;
-   no strict;
+   no strict 'refs';
    @{"${inner_target}::EXPORT_OK"} = @{$export_data->{exports}};
    @{"${inner_target}::EXPORT"} = @{$export_data->{defaults}};
    %{"${inner_target}::EXPORT_TAGS"} = %{$export_data->{tags}};
@@ -28,24 +23,30 @@ DEATH
       use strict;
       my ($self, @args) = @_;
 
-      if (first { ref || !m/^:?\w+$/ } @args) {
-         die 'your usage of Sub::Exporter::Progressive requires Sub::Exporter to be installed'
+      if (first { ref || !m/ \A [:-]? \w+ \z /xm } @args) {
+         croak 'your usage of Sub::Exporter::Progressive requires Sub::Exporter to be installed'
             unless eval { require Sub::Exporter };
-         $full_exporter ||=
-            Sub::Exporter::build_exporter($export_data->{original});
+         $full_exporter ||= Sub::Exporter::build_exporter($export_data->{original});
 
          goto $full_exporter;
       } else {
          require Exporter;
+         s/ \A - /:/xm for @args;
+         @_ = ($self, @args);
          goto \&Exporter::import;
       }
    };
+   return;
 }
+
+my $too_complicated = <<'DEATH';
+You are using Sub::Exporter::Progressive, but the features your program uses from
+Sub::Exporter cannot be implemented without Sub::Exporter, so you might as well
+just use vanilla Sub::Exporter
+DEATH
 
 sub sub_export_options {
    my ($inner_target, $setup, $options) = @_;
-
-   my $TOO_COMPLICATED = 0;
 
    my @exports;
    my @defaults;
@@ -58,37 +59,33 @@ sub sub_export_options {
       for my $opt (keys %options) {
          if ($opt eq 'exports') {
 
-            $TOO_COMPLICATED = 1, last OPTIONS
-               if ref $options{exports} ne 'ARRAY';
-
+            croak $too_complicated if ref $options{exports} ne 'ARRAY';
             @exports = @{$options{exports}};
-
-            $TOO_COMPLICATED = 1, last OPTIONS
-               if first { ref } @exports;
+            croak $too_complicated if first { ref } @exports;
 
          } elsif ($opt eq 'groups') {
             %tags = %{$options{groups}};
             for my $tagset (values %tags) {
-               $TOO_COMPLICATED = 1 if first { /^-(?!all\b)/ || ref } @{$tagset};
+               croak $too_complicated if first { / \A - (?! all \b ) /x || ref } @{$tagset};
             }
             @defaults = @{$tags{default} || [] };
          } else {
-            $TOO_COMPLICATED = 1;
-            last OPTIONS
+            croak $too_complicated;
          }
       }
       @{$_} = map { / \A  [:-] all \z /x ? @exports : $_ } @{$_} for \@defaults, values %tags;
       $tags{all} ||= [ @exports ];
-      my @errors = grep { my $default = $_; !grep { $default eq $_ } @exports } @defaults;
-      die join(', ', @errors) . " is not exported by the $inner_target module\n" if @errors;
+      my %exports = map { $_ => 1 } @exports;
+      my @errors = grep { not $exports{$_} } @defaults;
+      croak join(', ', @errors) . " is not exported by the $inner_target module\n" if @errors;
    }
 
-   return $TOO_COMPLICATED, {
+   return {
       exports => \@exports,
       defaults => \@defaults,
       original => $options,
       tags => \%tags,
-   }
+   };
 }
 
 1;
