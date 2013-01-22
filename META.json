@@ -22,7 +22,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::More" : "0.89"
+            "Test::More" : "0.96"
          }
       },
       "configure" : {
@@ -31,9 +31,11 @@
          }
       },
       "runtime" : {
-         "requires" : {}
+         "requires" : {
+            "Exporter" : "5.58"
+         }
       }
    },
    "release_status" : "stable",
-   "version" : "0.001007"
+   "version" : "0.001008"
 }

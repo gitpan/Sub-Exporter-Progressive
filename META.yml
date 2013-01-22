@@ -3,7 +3,7 @@ abstract: 'Only use Sub::Exporter if you need it'
 author:
   - 'frew - Arthur Axel Schmidt (cpan:FREW) <frioux+cpan@gmail.com>'
 build_requires:
-  Test::More: 0.89
+  Test::More: 0.96
 configure_requires:
   ExtUtils::MakeMaker: 0
 dynamic_config: 1
@@ -17,5 +17,6 @@ no_index:
   directory:
     - t
     - inc
-requires: {}
-version: 0.001007
+requires:
+  Exporter: 5.58
+version: 0.001008
