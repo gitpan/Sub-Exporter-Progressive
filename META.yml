@@ -3,10 +3,10 @@ abstract: 'Only use Sub::Exporter if you need it'
 author:
   - 'frew - Arthur Axel Schmidt (cpan:FREW) <frioux+cpan@gmail.com>'
 build_requires:
-  Test::More: 0.96
+  Test::More: 0.88
 configure_requires:
   ExtUtils::MakeMaker: 0
-dynamic_config: 1
+dynamic_config: 0
 generated_by: 'ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
@@ -19,4 +19,8 @@ no_index:
     - inc
 requires:
   Exporter: 5.58
-version: 0.001008
+resources:
+  bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Sub-Exporter-Progressive
+  homepage: http://search.cpan.org/dist/Sub-Exporter-Progressive/
+  repository: git://git.shadowcat.co.uk/p5sagit/Sub-Exporter-Progressive.git
+version: 0.001009

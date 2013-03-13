@@ -3,7 +3,7 @@ package Sub::Exporter::Progressive;
 use strict;
 use warnings;
 
-our $VERSION = '0.001008';
+our $VERSION = '0.001009';
 
 use Carp 'croak';
 use List::Util 'first';
@@ -29,6 +29,8 @@ sub import {
          $full_exporter ||= Sub::Exporter::build_exporter($export_data->{original});
 
          goto $full_exporter;
+      } elsif (defined(my $num = first { !ref and m/^\d/ } @args)) {
+         die "cannot export symbols with a leading digit: '$num'";
       } else {
          require Exporter;
          s/ \A - /:/xm for @args;
