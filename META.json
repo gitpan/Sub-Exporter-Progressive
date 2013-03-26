@@ -31,9 +31,7 @@
          }
       },
       "runtime" : {
-         "requires" : {
-            "Exporter" : "5.58"
-         }
+         "requires" : {}
       }
    },
    "release_status" : "stable",
@@ -46,5 +44,5 @@
          "url" : "git://git.shadowcat.co.uk/p5sagit/Sub-Exporter-Progressive.git"
       }
    },
-   "version" : "0.001009"
+   "version" : "0.001010"
 }
