@@ -7,7 +7,7 @@ SYNOPSIS
      use Sub::Exporter::Progressive -setup => {
        exports => [qw( break gather gathered take )],
        groups => {
-         defaults => [qw( break gather gathered take )],
+         default => [qw( break gather gathered take )],
        },
      };
 
@@ -27,7 +27,7 @@ DESCRIPTION
     module is a "Sub::Exporter" wrapper that will let your users just use
     Exporter if all they are doing is picking exports, but use
     "Sub::Exporter" if your users try to use "Sub::Exporter"'s more advanced
-    features features, like renaming exports, if they try to use them.
+    features, like renaming exports, if they try to use them.
 
     Note that this module will export @EXPORT, @EXPORT_OK and %EXPORT_TAGS
     package variables for "Exporter" to work. Additionally, if your package

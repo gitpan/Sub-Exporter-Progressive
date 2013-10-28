@@ -1,3 +1,8 @@
+0.001011 - 2013-10-28
+  - Fix in global destruction (Graham Knop)
+  - Fix SYNOPSIS
+  - Fix duplicate word in DESCRIPTION (RT#86072)
+
 0.001010 - 2013-03-26
   - Fix module name in Makefile.PL (RT#83932)
   - Work around Exporter.pm not installable on perl < 5.8.0
